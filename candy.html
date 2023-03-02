@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+ <title> Candy stall</title>
+<body>
+
+<h2>Rama Krishna Reddy Boggula choosing candy</h2>
+<form>
+    <fieldset>
+      <legend>Select your candy preferences:</legend>
+      <div>
+        <label for="dark-chocolate">Dark-Chocolate</label>
+        <input type="checkbox" id="dark-chocolates" value="True">
+      </div>
+      <div>
+        <label for="nuts">Nuts</label>
+        <input type="checkbox" id="nuts" value="True">
+      </div>
+      <div>
+        <label for="Chewy">Chewy</label>
+        <input type="checkbox" id="chewy" value="False">
+      </div>
+    </fieldset>
+  </form>
+  <button onclick="selectBox()">Select a box</button>
+  <div id="results"></div>
+  <script>
+    let my_candy_box = {};
+
+    function selectBox() {
+      my_candy_box = {};
+      my_candy_box.dark = document.getElementById("Dark-chocolate").checked;
+      my_candy_box.nuts = document.getElementById("Nuts").checked;
+      my_candy_box.chewy = document.getElementById("Chewy").checked;
+      document.getElementById("results").innerHTML = JSON.stringify(my_candy_box);
+    }
+  </script>
+  
+      <script>
+      function selectBox() {
+              my_candy_box = {};
+              my_candy_box.dark = document.getElementById("Dark-chocolate").checked;
+              my_candy_box.nuts = document.getElementById("Nuts").checked;
+              my_candy_box.chewy = document.getElementById("Chewy").checked;
+              document.getElementById("result").innerHTML = JSON.stringify(my_candy_box);
+          }
+  
+          function updateBox() {
+              let size = document.getElementById("size").value;
+              let price = document.getElementById("price").value;
+              my_candy_box[size] = price;
+              document.getElementById("result").innerHTML = JSON.stringify(my_candy_box);
+          }
+      </script>
+      <form>
+          <label for="dark">Dark-Chocolate</label>
+          <input type="checkbox" id="dark" value="True">
+          <label for="nuts">Nuts</label>
+          <input type="checkbox" id="nuts" value="True">
+          <label for="chewy">Chewy</label>
+          <input type="checkbox" id="chewy" value="False">
+          <br>
+          <button type="button" onclick="selectBox()">Select a box</button>
+      </form>
+      <form>
+          <label for="size">Enter the size</label>
+          <input type="text" id="size" value="size">
+          <label for="price">Enter price</label>
+          <input type="text" id="price" value="price">
+          <br>
+          <button type="button" onclick="updateBox()">Update the box</button>
+      </form>
+      <div id="result"></div>
+  </body>
+  </html>

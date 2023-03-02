@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Currency conversions</title>
+    </head>
+<body>
+<h2>Rama Krishna Reddy Boggula shows currency conversions </h2>
+<h2>Getting input</h2>
+<label for="base-amount">Enter base amount:</label>
+	<input type="number" id="base-amount" value="50"><br><br>
+
+	<label for="conversion-rate">Enter the conversion rate:</label>
+	<input type="number" id="conversion-rate" value="35"><br><br>
+
+	<button onclick="convert()">Show conversions</button><br><br>
+<div id="conversions"></div>
+    <script>
+		function convert() {
+			const base = document.getElementById("base-amount").value;
+			const conversion = document.getElementById("conversion-rate").value;
+			let toShow = "";
+			for (let i = 1; i <= 5; i++) {
+				const value = base * Math.pow(2, i-1);
+				const convertedValue = value * conversion;
+				toShow += `${value} is ${convertedValue}; `;
+			}
+			document.getElementById("conversions").innerHTML = "Conversions are: " + toShow;
+		}
+	</script>
+   <script>
+            function chooseOp() {
+                const base = parseFloat(document.getElementById("base-amount").value);
+                const conversion = parseFloat(document.getElementById("conversion-rate").value);
+                let result;
+                if (document.getElementById("mean").checked) {
+                    result = (base + conversion) / 2;
+                    document.getElementById("result").innerHTML = `The average of ${base}                    
+                    and ${conversion} is ${result}`;
+                } else if (document.getElementById("maximum").checked) {
+                    result = Math.max(base, conversion);
+                    document.getElementById("result").innerHTML = `The maximum of ${base} 
+                    and ${conversion} is ${result}`;
+                } else if (document.getElementById("minimum").checked) {
+                    result = Math.min(base, conversion);
+                    document.getElementById("result").innerHTML = `The minimum of ${base} 
+                    and ${conversion} is ${result}`;
+                }
+            }
+        </script>
+        <form>
+            <label for="mean"><input type="radio" id="mean" name="operation" value="mean" 
+                onClick="chooseOp()">Average</label><br>
+            <label for="maximum"><input type="radio" id="maximum" name="operation" 
+                value="maximum" onClick="chooseOp()">Maximum</label><br>
+            <label for="minimum"><input type="radio" id="minimum" name="operation" 
+                value="minimum" onClick="chooseOp()">Minimum</label><br>
+        </form>
+    
+        <label for="base-amount">Enter base amount:</label>
+        <input type="number" id="base-amount" value="5"><br><br>
+    
+        <label for="conversion-rate">Enter the conversion rate:</label>
+        <input type="number" id="conversion-rate" value="3.3"><br><br>
+    
+        <div id="result"></div>
+</body>
+</html>
+ 

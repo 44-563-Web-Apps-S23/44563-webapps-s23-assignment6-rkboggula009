@@ -4,34 +4,70 @@
         <title>Assignment 06.Webapps</title>
     </head>
 <body>
-    <h2>painter entry Rama Krishna Reddy Boggula</h2>
+    <h2>Painter entry Rama Krishna Reddy Boggula</h2>
+    <h2>Getting Input</h2>
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+
+    <label for="hidden-painter">The hidden painter name:</label>
+    <input type="password" id="hidden-painter" value="Picasso" />
+    <br />
+    <label for="guess-painter">Guess the painter:</label>
+    <input type="text" id="guess-painter" />
+    <br />
+    <input type="button" value="Check the guess" onclick="checkPainter()" />
+    <br />
+    <div id="result"></div>
 </form>
-<p id="result">This text will be replaced </p>
+
 <script> 
 var good=0
 var oops=0
 function checkPainter(){
-    console.log("Getting form values")
-    password = document.getElementById("password").value
-    check = document.getElementById("check").value
-    confirmed = confirm("Are these the values? "+password+" and "+check)
-    
-    out = document.getElementById("result")
-    if(password==check){
-        alert("You got it right")
-        good=good+1
+    const hiddenPainterInput = document.getElementById("hidden-painter");
+    const guessPainterInput = document.getElementById("guess-painter");
+
+    if (hiddenPainterInput.value === guessPainterInput.value) {
+        good++;
+        alert("You got it right!");
     } else {
-        oops=oops+1
-        alert('Sorry')
+        oops++;
+        alert("Sorry!");
     }
-    out.innerHTML ="Right count: " +good+" Wrong count: "+oops
+
+      const resultElement = document.getElementById("result");
+      resultElement.innerHTML = `Right: ${good} | Wrong: ${oops}`;
 }
+</script>
+
+<div class="container">
+    <img src="Orchid.jpg" height="=100" width="100" onclick="selectImage()" id="getimage">
+</div>
+<script>
+    var useimage=1
+    function selectImage(){
+        out=document.getElementById("getimage")
+        switch(useimage){
+            case 1:
+                out.src="Bambusa.jpg"
+                useimage+=1
+                break
+            case 2:
+            out.src="Orchid.jpg"
+                useimage+=1
+                break
+            case 3:
+            out.src="Gaillardia.jpg"
+                useimage+=1
+                break
+
+        }
+        if(useimage==4){
+            useimage=1
+        }
+    }
 </script>
 </body>
 </html> 
+
+
+
